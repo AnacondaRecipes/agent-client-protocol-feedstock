@@ -28,13 +28,19 @@ requirements:
     - opentelemetry-sdk >=1.28.0
 
 test:
+  source_files:
+    - tests
+    - examples  # used by test:  tests/test_rpc.py::test_spawn_agent_process_roundtrip
   imports:
     - acp
   requires:
     - pip
+    - pytest >=7.2.0
+    - pytest-asyncio >=0.21.0
   commands:
     - pip check
     - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
+    - pytest --import-mode=importlib -vv tests
 
 about:
   license: Apache-2.0
