@@ -30,7 +30,7 @@ requirements:
 test:
   source_files:
     - tests
-    - examples  # used by test:  tests/test_rpc.py::test_spawn_agent_process_roundtrip
+    - examples  # used by test: tests/test_rpc.py::test_spawn_agent_process_roundtrip
   imports:
     - acp
   requires:
@@ -43,10 +43,16 @@ test:
     - pytest --import-mode=importlib -vv tests
 
 about:
+  home: https://github.com/agentclientprotocol/python-sdk
+  summary: Python SDK for ACP clients and agents.
+  description: |
+    Build ACP-compliant agents and clients in Python with generated schema
+    models, asyncio transports, helper builders, and runnable demos.
   license: Apache-2.0
+  license_family: Apache
   license_file: LICENSE
-  homepage: https://github.com/agentclientprotocol/python-sdk
-  summary: A Python implement of Agent Client Protocol (ACP, by Zed Industries).
+  dev_url: https://github.com/agentclientprotocol/python-sdk
+  doc_url: https://agentclientprotocol.github.io/python-sdk
 
 extra:
   recipe-maintainers:
