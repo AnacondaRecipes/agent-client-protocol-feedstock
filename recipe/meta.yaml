@@ -45,7 +45,7 @@ test:
   commands:
     - pip check
     - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
-    - pytest --import-mode=importlib -vv tests
+    - pytest --import-mode=importlib -vv {{ skip_tests }} tests
 
 about:
   home: https://github.com/agentclientprotocol/python-sdk
