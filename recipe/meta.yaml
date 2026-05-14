@@ -27,6 +27,11 @@ requirements:
     - logfire >=0.14
     - opentelemetry-sdk >=1.28.0
 
+{% skip_tests = "" %}
+# fails on Windows due to CRLF vs. LF line endings
+# E  AssertionError: assert 71682 == (71680 + 1)
+{% skip_tests = skip_tests + " --deselect=tests/real_user/test_stdio_limits.py::test_spawn_stdio_transport_custom_limit_handles_large_line" %}  # [win]
+
 test:
   source_files:
     - tests
@@ -40,7 +45,7 @@ test:
   commands:
     - pip check
     - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
-    - pytest --import-mode=importlib -vv tests
+    - pytest --import-mode=importlib -vv {{ skip_tests }} tests
 
 about:
   home: https://github.com/agentclientprotocol/python-sdk
