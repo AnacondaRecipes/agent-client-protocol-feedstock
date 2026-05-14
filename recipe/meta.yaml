@@ -24,6 +24,10 @@ requirements:
   run:
     - python
     - pydantic >=2.7
+  run_constrained:
+    # logfire
+    - logfire >=0.14
+    - opentelemetry-sdk >=1.28.0
 
 tests:
   - python:
