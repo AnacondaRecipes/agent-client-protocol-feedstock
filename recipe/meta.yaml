@@ -10,6 +10,7 @@ source:
     sha256: f8a6041e27423131e42e4d0cdd850d5b094b1092f79cc29501ab2bd57b92ee88
 
 build:
+  skip: true  # [py<310]
   number: 0
   noarch: python
   script:
@@ -17,11 +18,11 @@ build:
 
 requirements:
   host:
-    - python ${{ python_min }}.*
+    - python
     - pdm-backend
     - pip
   run:
-    - python >=${{ python_min }}
+    - python
     - pydantic >=2.7
 
 tests:
@@ -29,7 +30,7 @@ tests:
       imports:
         - acp
       pip_check: true
-      python_version: ${{ python_min }}.*
+      python_version:
 
 about:
   license: Apache-2.0
