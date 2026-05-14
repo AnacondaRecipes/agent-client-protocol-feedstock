@@ -33,7 +33,7 @@ test:
   requires:
     - pip
   commands:
-    - pip_check
+    - pip check
     - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
 
 about:
