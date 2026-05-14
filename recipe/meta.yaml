@@ -29,12 +29,14 @@ requirements:
     - logfire >=0.14
     - opentelemetry-sdk >=1.28.0
 
-tests:
-  - python:
-      imports:
-        - acp
-      pip_check: true
-      python_version:
+test:
+  imports:
+    - acp
+  requires:
+    - pip
+  commands:
+    - pip_check
+    - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
 
 about:
   license: Apache-2.0
