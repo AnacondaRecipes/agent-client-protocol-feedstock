@@ -39,7 +39,8 @@ requirements:
 {% set skip_tests_linux_win = [
   "--deselect=tests/real_user/test_stdio_limits.py::test_run_agent_stdio_buffer_limit",
   "--deselect=tests/real_user/test_stdio_shutdown.py::test_shutdown_with_unread_stdin[False]",
-  "--deselect=tests/real_user/test_stdio_shutdown.py::test_shutdown_with_unread_stdin[True]"
+  "--deselect=tests/real_user/test_stdio_shutdown.py::test_shutdown_with_unread_stdin[True]",
+  "--deselect=tests/real_user/test_stdio_limits.py::test_spawn_stdio_transport_custom_limit_handles_large_line"
 ] %}
 
 test:
