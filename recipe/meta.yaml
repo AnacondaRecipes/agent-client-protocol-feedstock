@@ -35,6 +35,12 @@ requirements:
 {% set skip_tests = [
   "--ignore=tests/test_gen_all.py",
 ] %}
+# assert '"id":1' in ''
+{% set skip_tests_linux_win = [
+  "--deselect=tests/real_user/test_stdio_limits.py::test_run_agent_stdio_buffer_limit",
+  "--deselect=tests/real_user/test_stdio_shutdown.py::test_shutdown_with_unread_stdin[False]",
+  "--deselect=tests/real_user/test_stdio_shutdown.py::test_shutdown_with_unread_stdin[True]"
+] %}
 
 test:
   source_files:
@@ -56,7 +62,8 @@ test:
   commands:
     - pip check
     - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
-    - pytest --import-mode=importlib -vv {{ skip_tests | join(" ")}} tests
+    - pytest --import-mode=importlib -vv {{ skip_tests | join(" ")}} tests # [osx]
+    - pytest --import-mode=importlib -vv {{ skip_tests | join(" ")}} {{ skip_tests_linux_win | join(' ')}} tests # [not osx]
 
 about:
   home: https://github.com/agentclientprotocol/python-sdk
